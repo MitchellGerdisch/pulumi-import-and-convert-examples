@@ -4,28 +4,18 @@ resource "azurerm_resource_group" "rg" {
   name     = "mitch-tf-rg-import"
 }
 
-resource "azurerm_virtual_network" "myvnet" {
-  name                = "myvnet"
-  address_space       = ["10.0.0.0/16"]
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+# Create a Storage Account within the Resource Group
+resource "azurerm_storage_account" "sa" {
+  name                     = "mitchtfsa"
+  resource_group_name      = azurerm_resource_group.rg.name
+  location                 = azurerm_resource_group.rg.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 }
 
-resource "azurerm_subnet" "mysubnet" {
-  name                 = "mysubnet"
-  resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.myvnet.name
-  address_prefixes       = ["10.0.1.0/24"]
-}
-
-resource "azurerm_network_interface" "mynic" {
-  name                = "mynic"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-
-  ip_configuration {
-    name                          = "ipconfig1"
-    subnet_id                     = azurerm_subnet.mysubnet.id
-    private_ip_address_allocation = "Dynamic"
-  }
+# Create a Storage Container within the Storage Account
+resource "azurerm_storage_container" "sc" {
+  name                  = "mitch-tf-sc"
+  storage_account_name  = azurerm_storage_account.sa.name
+  container_access_type = "private"
 }
