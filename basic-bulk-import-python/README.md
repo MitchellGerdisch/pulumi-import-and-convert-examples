@@ -8,7 +8,13 @@ Demonstrates bulk import using the `pulumi import -f` option
     * This will output the resource types and IDs to use for import below.
 * Go to `imported-project`
   * Modify `import.json` with the IDs from above. 
-  * `pulumi import -f import.json`
-  * Copy the computed code and use https://www.pulumi.com/ai/ to "rewrite this without explicit references"
-    * This will rewrite the code to use property references.
-    * Paste this into the imported-project program and do a `pulumi up` to show nothing has changed.
+  
+
+## Demo
+* Go to `imported-project`
+* Show `import.json` to show the json file.
+  * Explain there are ways to build this file programmatically.
+* `pulumi import -f import.json -o __main__.py`
+* Show the generated code in `__main__.py` 
+* `pulumi stack` to show the resources that are now managed in this stack.
+
