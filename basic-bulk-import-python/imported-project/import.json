@@ -1,5 +1,10 @@
 {
   "resources": [
+      { 
+        "type": "acme:az:StorageComponent",
+          "name":  "storage-component",
+          "component": true    
+      },
       {
         "type": "azure-native:resources:ResourceGroup",
         "name": "my-imported-rg",
@@ -8,12 +13,14 @@
       {
         "type": "azure-native:storage:StorageAccount",
         "name": "my-imported-sa",
-        "id": "/subscriptions/32b9cb2e-69be-4040-80a6-02cd6b2cc5ec/resourceGroups/resource_group8626fb89/providers/Microsoft.Storage/storageAccounts/saa9780efa"
+        "id": "/subscriptions/32b9cb2e-69be-4040-80a6-02cd6b2cc5ec/resourceGroups/resource_group8626fb89/providers/Microsoft.Storage/storageAccounts/saa9780efa",
+        "parent": "storage-component"
       },
       {
         "type": "azure-native:storage:BlobContainer",
         "name": "my-imported-blobcontainer",
-        "id": "/subscriptions/32b9cb2e-69be-4040-80a6-02cd6b2cc5ec/resourceGroups/resource_group8626fb89/providers/Microsoft.Storage/storageAccounts/saa9780efa/blobServices/default/containers/blobcontainer"
+        "id": "/subscriptions/32b9cb2e-69be-4040-80a6-02cd6b2cc5ec/resourceGroups/resource_group8626fb89/providers/Microsoft.Storage/storageAccounts/saa9780efa/blobServices/default/containers/blobcontainer",
+        "parent": "storage-component"
       }
   ]
 }
