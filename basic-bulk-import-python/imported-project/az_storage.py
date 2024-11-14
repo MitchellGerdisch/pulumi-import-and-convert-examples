@@ -4,12 +4,13 @@ import pulumi
 import pulumi_azure_native as azure_native
 
 class StorageComponent(pulumi.ComponentResource):
-    def __init__(self, name: str, resource_group_name: str, opts: pulumi.ResourceOptions = None):
-        super().__init__('acme:az:StorageComponent', name, {}, opts)
+    def __init__(self, name: str, resource_group_name: str, sa_name: str, opts: pulumi.ResourceOptions = None):
+        super().__init__('mycomponent:az:StorageComponent', name, {}, opts)
 
         # Create an Azure Storage Account
         self.account = azure_native.storage.StorageAccount(
-            f"{name}-sa",
+            "storageaccount",
+            account_name=sa_name,
             resource_group_name=resource_group_name,
             sku=azure_native.storage.SkuArgs(
                 name=azure_native.storage.SkuName.STANDARD_LRS,
@@ -20,7 +21,7 @@ class StorageComponent(pulumi.ComponentResource):
 
         # Create a Blob Container
         self.blob_container = azure_native.storage.BlobContainer(
-            f"{name}-blobcontainer",
+            "blobcontainer",
             account_name=self.account.name,
             resource_group_name=resource_group_name,
             public_access=azure_native.storage.PublicAccess.NONE,

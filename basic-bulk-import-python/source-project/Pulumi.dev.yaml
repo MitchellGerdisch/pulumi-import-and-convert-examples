@@ -1,4 +1,2 @@
 config:
   azure-native:location: WestUS2
-environment:
-  - azure-oidc

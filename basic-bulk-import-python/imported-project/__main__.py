@@ -1,3 +1,0 @@
-import pulumi
-from pulumi_azure_native import resources
-import az_storage
