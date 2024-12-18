@@ -1,9 +1,9 @@
-name: azure-python-terraform-imported
+name: imported-from-TFstate-project
 runtime:
   name: python
   options:
     virtualenv: venv
-description: A minimal Azure Native Python Pulumi program
+description: A project to show importing from a Terraform state file.
 config:
   pulumi:tags:
     value:

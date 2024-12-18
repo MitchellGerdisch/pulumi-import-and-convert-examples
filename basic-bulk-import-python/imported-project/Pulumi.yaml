@@ -1,4 +1,4 @@
-name: azure-python-imported
+name: import-demo-imported-project
 runtime:
   name: python
   options:
