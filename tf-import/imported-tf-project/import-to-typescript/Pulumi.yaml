@@ -1,0 +1,10 @@
+name: imported-from-TFstate-project
+description: A project to show importing from a Terraform state file.
+runtime:
+  name: nodejs
+  options:
+    packagemanager: npm
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: typescript
