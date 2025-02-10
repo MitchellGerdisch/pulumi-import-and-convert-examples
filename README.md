@@ -10,4 +10,4 @@ Provides a TF program to launch to create reasources and a folder/empty stack to
 See the README under the folder for details.
 
 ## tf-convert
-Provides a TF program (`backend-storage`) to run `pulumi convert` on to generate Pulumi code that can be stored in `backend-convert` directory.
+Provides a TF program (with a TF module) to run `pulumi convert` on to generate Pulumi code including a component resource based on the module..
